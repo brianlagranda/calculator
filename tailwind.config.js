@@ -4,14 +4,25 @@ export default {
   theme: {
     extend: {
       colors: {
-        grayishOrange: 'hsl(30, 25%, 89%)',
-        grayishOrangeDark: 'hsl(28, 16%, 65%)',
+        'main-darkBlue': 'hsl(222, 26%, 31%)',
+        'toggle-darkBlue': 'hsl(223, 31%, 20%)',
+        'screen-darkBlue': 'hsl(224, 36%, 15%)',
+
+        'key-blue': 'hsl(225, 21%, 49%)',
+        'keyShadow-darkBlue': 'hsl(224, 28%, 35%)',
+        'toggle-red': 'hsl(6, 63%, 50%)',
+        'toggleShadow-darkRed': 'hsl(6, 70%, 34%)',
+
+        'key-lightGrayishOrange': 'hsl(30, 25%, 89%)',
+        'keyShadow-grayishOrange': 'hsl(28, 16%, 65%)',
+
+        grayishBlue: 'hsl(221, 14%, 31%)',
       },
-      width: {
-        132: '34rem',
+      fontSize: {
+        '3xlPlus': '2rem',
       },
     },
   },
-  plugins: [],
+  plugins: ['prettier-plugin-tailwindcss'],
 };
 

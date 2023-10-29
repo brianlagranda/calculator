@@ -4,9 +4,9 @@ import ThemeSelector from './components/ThemeSelector';
 
 function App() {
   return (
-    <main className='bg-slate-600 rounded-lg p-6 w-132 mx-auto mt-32'>
-      <div className='flex w-full justify-between items-center px-4'>
-        <h1 className='text-white font-bold text-2xl'>calc</h1>
+    <main className='mx-auto mt-32 max-w-xl rounded-lg bg-slate-600 p-6'>
+      <div className='flex w-full items-center justify-between px-4'>
+        <h1 className='text-2xl font-bold text-white'>calc</h1>
         <ThemeSelector />
       </div>
       <Display />
