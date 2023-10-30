@@ -1,26 +1,33 @@
-import Button from './Button';
+import ButtonNumber from './ButtonNumber';
+import ButtonOperator from './ButtonOperator';
 
 export default function Keypad() {
   return (
-    <div className='grid w-full grid-cols-4 grid-rows-5 gap-5 rounded-lg bg-slate-800/40 p-8'>
-      <Button text='7' />
-      <Button text='8' />
-      <Button text='9' />
-      <Button text='DEL' additionalClasses='' />
-      <Button text='4' />
-      <Button text='5' />
-      <Button text='6' />
-      <Button text='+' />
-      <Button text='1' />
-      <Button text='2' />
-      <Button text='3' />
-      <Button text='-' />
-      <Button text='.' />
-      <Button text='0' />
-      <Button text='/' />
-      <Button text='x' />
-      <Button text='RESET' additionalClasses='col-span-2' />
-      <Button text='=' additionalClasses='col-span-2' />
+    <div className='grid w-full grid-cols-4 grid-rows-5 gap-5 rounded-lg bg-toggle-darkBlue/80 p-8'>
+      <ButtonNumber text='7' onClick={} />
+      <ButtonNumber text='8' />
+      <ButtonNumber text='9' />
+      <ButtonOperator
+        text='DEL'
+        additionalClasses='border-b-keyShadow-darkRed bg-key-red text-white text-2xl active:bg-key-red active:border-b-keyHover-lightRed hover:!bg-keyHover-lightRed'
+      />
+      <ButtonNumber text='4' />
+      <ButtonNumber text='5' />
+      <ButtonNumber text='6' />
+      <ButtonOperator text='+' />
+      <ButtonNumber text='1' />
+      <ButtonNumber text='2' />
+      <ButtonNumber text='3' />
+      <ButtonOperator text='-' />
+      <ButtonNumber text='.' />
+      <ButtonNumber text='0' />
+      <ButtonOperator text='/' />
+      <ButtonOperator text='x' />
+      <ButtonOperator text='RESET' additionalClasses='col-span-2' />
+      <ButtonOperator
+        text='='
+        additionalClasses='col-span-2 border-b-keyShadow-darkRed bg-key-red text-white text-2xl active:bg-key-red/90 active:border-b-keyHover-lightRed hover:!bg-keyHover-lightRed'
+      />
     </div>
   );
 }

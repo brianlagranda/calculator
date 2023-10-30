@@ -1,17 +1,16 @@
 interface ButtonProps {
   text: string;
-  onClick: () => void;
   additionalClasses: string;
+  onClick: () => void;
 }
 
 const Button: React.FC<ButtonProps> = ({
   text,
-  onClick,
   additionalClasses,
+  onClick,
 }) => {
   const baseButton =
-    'flex items-center justify-center rounded-lg border-b-4 border-b-keyShadow-grayishOrange bg-key-lightGrayishOrange text-3xlPlus text-grayishBlue hover:bg-white active:bg-key-lightGrayishOrange/90 p-1.5';
-
+    'flex items-center justify-center rounded-lg border-b-4 border-b-keyShadow-darkBlue bg-key-blue text-white text-2xl hover:bg-keyHover-lightBlue active:bg-key-blue/90 active:border-b-key-blue p-1.5';
   return (
     <button
       type='button'
