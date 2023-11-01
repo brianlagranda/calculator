@@ -1,6 +1,5 @@
-import Keypad from './components/Keypad';
-import Display from './components/Display';
 import ThemeSelector from './components/ThemeSelector';
+import Calculator from './components/Calculator';
 
 function App() {
   return (
@@ -9,8 +8,7 @@ function App() {
         <h1 className='text-2xl font-bold text-white'>calc</h1>
         <ThemeSelector />
       </div>
-      <Display />
-      <Keypad />
+      <Calculator />
     </main>
   );
 }

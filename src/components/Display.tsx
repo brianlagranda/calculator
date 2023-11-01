@@ -1,24 +1,20 @@
-import { useState } from 'react';
+interface DisplayProps {
+  result: string | null;
+}
 
-export default function Display() {
-  const [inputValue, setInputValue] = useState('');
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const numericValue = event.target.value.replace(/[^0-9]/g, '');
-
-    setInputValue(numericValue);
-  };
-
+const Display: React.FC<DisplayProps> = ({ result }) => {
   return (
     <div>
       <input
         name='display'
         id='displayInput'
-        value={inputValue}
+        value={result ?? ''}
         className='my-6 h-28 w-full rounded-md bg-screen-darkBlue/90 px-6 text-right text-5xl text-white'
-        onChange={handleInputChange}
+        readOnly
       />
     </div>
   );
-}
+};
+
+export default Display;
 
