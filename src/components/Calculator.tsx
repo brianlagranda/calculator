@@ -3,38 +3,37 @@ import Display from './Display';
 import Keypad from './Keypad';
 
 export default function Calculator() {
-  const [input, setInput] = useState<string>('0');
-  const [calculatedResult, setCalculatedResult] = useState<string>(0);
+  const [input, setInput] = useState<string>('');
+  const [currentInput, setCurrentInput] = useState<string>('');
+  const [PrevInput, setPrevInput] = useState<string>('');
+  const [operator, setOperator] = useState<string | null>(null);
+  const [calculatedResult, setCalculatedResult] = useState<string>('0');
 
-  const add = (a: number, b: number) => a + b;
+  const add = (a: string, b: string): number => Number(a + b);
 
-  const multiply = (a: number, b: number) => a * b;
+  const subtract = (a: string, b: string): number => Number(a - b);
 
-  const divide = (a: number, b: number) => a / b;
+  const multiply = (a: string, b: string): number => Number(a * b);
 
-  const deleteLastChar = (input: string) => {
-    setInput(input.slice(0, -1));
+  const divide = (a: string, b: string): number => Number(a / b);
+
+  const deleteLastChar = (calculatedResult: string) => {
+    return setCalculatedResult(calculatedResult.slice(0, -1));
   };
 
-  const resetInput = (input: string) => {
-    setInput('0');
+  const clearAll = () => {
+    setPrevInput('');
+    setCurrentInput('0');
+    setOperator(null);
+    setCalculatedResult('0');
   };
 
   const handleClick = (value: string) => {
-    if (input === '0') setInput(value);
-    else {
-      if (value === '.' || value in [1, 2, 3, 4, 5, 6, 7, 8, 9, 0])
-        setInput(input + value);
-
-      switch (value) {
-        case 'DEL':
-          return deleteLastChar(input);
-        case 'RESET':
-          return resetInput(input);
-        case '+':
-          console.log(value);
-          return add(input, value);
-      }
+    if (value >= '0' && value <= '9') {
+      setInput(input + value);
+    } else {
+      setOperator(value);
+      setPrevInput(input);
     }
   };
 
@@ -45,4 +44,21 @@ export default function Calculator() {
     </>
   );
 }
+
+/*     switch (operator) {
+      case 'DEL':
+        return deleteLastChar(calculatedResult);
+      case 'RESET':
+        return clearAll();
+      case '+':
+        return add(PrevInput, currentInput);
+      case '-':
+        return subtract(PrevInput, currentInput);
+      case '/':
+        return divide(PrevInput, currentInput);
+      case 'x':
+        return multiply(PrevInput, currentInput);
+      case '=':
+        return alert('hi');
+    } */
 

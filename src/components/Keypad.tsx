@@ -2,7 +2,7 @@ import ButtonNumber from './ButtonNumber';
 import ButtonOperator from './ButtonOperator';
 
 interface KeypadProps {
-  onButtonClick: (value: string | null) => void;
+  onButtonClick: (value: string) => void;
 }
 
 export default function Keypad({ onButtonClick }: KeypadProps) {
@@ -10,7 +10,7 @@ export default function Keypad({ onButtonClick }: KeypadProps) {
     event.preventDefault();
 
     const button: HTMLButtonElement = event.currentTarget;
-    onButtonClick(button.textContent);
+    onButtonClick(button.innerText);
   };
 
   return (
