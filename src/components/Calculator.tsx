@@ -2,6 +2,11 @@ import { useState } from 'react';
 import Display from './Display';
 import Keypad from './Keypad';
 
+const add = (a: string, b: string) => Number(a) + Number(b);
+const subtract = (a: string, b: string) => Number(a) - Number(b);
+const multiply = (a: string, b: string) => Number(a) * Number(b);
+const divide = (a: string, b: string) => Number(a) / Number(b);
+
 export default function Calculator() {
   const [prevInput, setPrevInput] = useState<string>('');
   const [currentInput, setCurrentInput] = useState<string>('');
@@ -11,28 +16,20 @@ export default function Calculator() {
 
   const operators: string[] = ['+', '-', 'x', '/'];
 
-  const add = (a: string, b: string) => Number(a) + Number(b);
-
-  const substract = (a: string, b: string) => Number(a) - Number(b);
-
-  const multiply = (a: string, b: string) => Number(a) * Number(b);
-
-  const divide = (a: string, b: string) => Number(a) / Number(b);
-
   const calculate = () => {
     let calculatedResult: number;
     switch (operator) {
       case '+':
-        calculatedResult = Number(result) + Number(currentInput);
+        calculatedResult = add(result, currentInput);
         break;
       case '-':
-        calculatedResult = Number(result) - Number(currentInput);
+        calculatedResult = subtract(result, currentInput);
         break;
       case 'x':
-        calculatedResult = Number(result) * Number(currentInput);
+        calculatedResult = multiply(result, currentInput);
         break;
       case '/':
-        calculatedResult = Number(result) / Number(currentInput);
+        calculatedResult = divide(result, currentInput);
         break;
       default:
         calculatedResult = 0;
@@ -94,4 +91,6 @@ export default function Calculator() {
     </>
   );
 }
+
+export { add, subtract, multiply, divide };
 
