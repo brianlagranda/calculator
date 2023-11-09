@@ -6,10 +6,40 @@ export default function Calculator() {
   const [prevInput, setPrevInput] = useState<string>('');
   const [currentInput, setCurrentInput] = useState<string>('');
   const [operator, setOperator] = useState<string>('');
-  const [calculatedResult, setCalculatedResult] = useState<string>('');
+  const [result, setResult] = useState<string>('0');
   const [record, setRecord] = useState<string[]>([]);
 
   const operators: string[] = ['+', '-', 'x', '/'];
+
+  const add = (a: string, b: string) => Number(a) + Number(b);
+
+  const substract = (a: string, b: string) => Number(a) - Number(b);
+
+  const multiply = (a: string, b: string) => Number(a) * Number(b);
+
+  const divide = (a: string, b: string) => Number(a) / Number(b);
+
+  const calculate = () => {
+    let calculatedResult: number;
+    switch (operator) {
+      case '+':
+        calculatedResult = Number(result) + Number(currentInput);
+        break;
+      case '-':
+        calculatedResult = Number(result) - Number(currentInput);
+        break;
+      case 'x':
+        calculatedResult = Number(result) * Number(currentInput);
+        break;
+      case '/':
+        calculatedResult = Number(result) / Number(currentInput);
+        break;
+      default:
+        calculatedResult = 0;
+    }
+    console.log('calculatedResult inside: ', calculatedResult);
+    setResult(String(calculatedResult));
+  };
 
   const deleteLastChar = (input: string) => {
     return setCurrentInput(input.slice(0, -1));
@@ -19,50 +49,24 @@ export default function Calculator() {
     setPrevInput('');
     setCurrentInput('');
     setOperator('');
-    setCalculatedResult('');
+    setResult('0');
     setRecord([]);
-  };
-
-  const add = (a: string, b: string): number => Number(a) + Number(b);
-
-  const subtract = (a: string, b: string): number => Number(a) - Number(b);
-
-  const multiply = (a: string, b: string): number => Number(a) * Number(b);
-
-  const divide = (a: string, b: string): number => Number(a) / Number(b);
-
-  const calculate = (a: string, operator: string, b: string) => {
-    let result: Number = 0;
-    console.log('operador: ', operator);
-
-    switch (operator) {
-      case '+':
-        result = add(a, b);
-        break;
-      case '-':
-        result = subtract(a, b);
-        break;
-      case 'x':
-        result = multiply(a, b);
-        break;
-      case '/':
-        result = divide(a, b);
-        break;
-      default:
-        return a;
-    }
-
-    setCalculatedResult(String(result));
   };
 
   const handleClick = (value: string) => {
     if (value >= '0' && value <= '9') {
       setCurrentInput((currentInput) => currentInput + value);
     } else if (currentInput !== '' && operators.includes(value)) {
-      setPrevInput(currentInput);
-      setRecord((record) => [...record, currentInput, value]);
+      calculate();
       setOperator(value);
+      setRecord((record) => [...record, currentInput, value]);
+      setPrevInput(currentInput);
+      console.log('prevInput Handle: ', prevInput);
       setCurrentInput('');
+    } else {
+      if (value !== 'DEL' && value !== '=') {
+        setRecord((record) => [...record.slice(0, -1), value]);
+      }
     }
 
     switch (value) {
@@ -71,22 +75,21 @@ export default function Calculator() {
       case 'RESET':
         return clearAll();
       case '=':
-        if (currentInput !== '')
-          setRecord((record) => [...record, currentInput]);
-        calculatedResult === ''
-          ? calculate(prevInput, operator, currentInput)
-          : calculate(calculatedResult, operator, currentInput);
+        if (currentInput !== '') {
+          calculate();
+          setRecord((record) => [...record, currentInput, value, result]);
+        }
     }
   };
 
   console.log('record: ', record);
   console.log('prevInput: ', prevInput);
   console.log('currentInput: ', currentInput);
-  console.log('calculatedResult Outside:', calculatedResult);
+  console.log('result Outside:', result);
 
   return (
     <>
-      <Display result={currentInput === '' ? calculatedResult : currentInput} />
+      <Display result={currentInput === '' ? result : currentInput} />
       <Keypad onButtonClick={handleClick} />
     </>
   );
