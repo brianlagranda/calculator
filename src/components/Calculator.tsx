@@ -8,16 +8,17 @@ const multiply = (a: string, b: string) => Number(a) * Number(b);
 const divide = (a: string, b: string) => Number(a) / Number(b);
 
 export default function Calculator() {
-  const [prevInput, setPrevInput] = useState<string>('');
-  const [currentInput, setCurrentInput] = useState<string>('');
+  const [currentInput, setCurrentInput] = useState<string>('0');
   const [operator, setOperator] = useState<string>('');
   const [result, setResult] = useState<string>('0');
   const [record, setRecord] = useState<string[]>([]);
 
-  const operators: string[] = ['+', '-', 'x', '/'];
+  const OPERATORS: string[] = ['+', '-', 'x', '/'];
+  const NUMBERS: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
-  const calculate = () => {
+  const calculate = (operator: string) => {
     let calculatedResult: number;
+
     switch (operator) {
       case '+':
         calculatedResult = add(result, currentInput);
@@ -34,8 +35,8 @@ export default function Calculator() {
       default:
         calculatedResult = 0;
     }
-    console.log('calculatedResult inside: ', calculatedResult);
-    setResult(String(calculatedResult));
+
+    return String(calculatedResult);
   };
 
   const deleteLastChar = (input: string) => {
@@ -43,23 +44,31 @@ export default function Calculator() {
   };
 
   const clearAll = () => {
-    setPrevInput('');
-    setCurrentInput('');
+    setCurrentInput('0');
     setOperator('');
     setResult('0');
     setRecord([]);
   };
 
   const handleClick = (value: string) => {
-    if (value >= '0' && value <= '9') {
-      setCurrentInput((currentInput) => currentInput + value);
-    } else if (currentInput !== '' && operators.includes(value)) {
-      calculate();
+    if (value === '0' && currentInput === '0') return;
+    if (currentInput === '0' && OPERATORS.includes(value)) setOperator(value);
+
+    if (
+      NUMBERS.includes(value) ||
+      (value === '.' && !currentInput.includes(value))
+    ) {
+      if (currentInput === '0' && value !== '.') {
+        setCurrentInput(value);
+      } else {
+        setCurrentInput((currentInput) => currentInput + value);
+      }
+    } else if (currentInput !== '0' && OPERATORS.includes(value)) {
       setOperator(value);
-      setRecord((record) => [...record, currentInput, value]);
-      setPrevInput(currentInput);
-      console.log('prevInput Handle: ', prevInput);
-      setCurrentInput('');
+      operator === ''
+        ? setResult(calculate(value))
+        : setResult(calculate(operator));
+      setCurrentInput('0');
     } else {
       if (value !== 'DEL' && value !== '=') {
         setRecord((record) => [...record.slice(0, -1), value]);
@@ -72,25 +81,15 @@ export default function Calculator() {
       case 'RESET':
         return clearAll();
       case '=':
-        if (currentInput !== '') {
-          calculate();
-          setRecord((record) => [...record, currentInput, value, result]);
-        }
+        setResult(calculate(operator));
+        setCurrentInput('0');
     }
   };
 
-  console.log('record: ', record);
-  console.log('prevInput: ', prevInput);
-  console.log('currentInput: ', currentInput);
-  console.log('result Outside:', result);
-
   return (
     <>
-      <Display result={currentInput === '' ? result : currentInput} />
+      <Display result={currentInput === '0' ? result : currentInput} />
       <Keypad onButtonClick={handleClick} />
     </>
   );
 }
-
-export { add, subtract, multiply, divide };
-
