@@ -71,8 +71,6 @@ export default function Calculator() {
       setCurrentInput('0');
     } else {
       if (value !== 'DEL' && value !== '=') {
-        console.log('enough');
-
         setRecord((record) => [...record.slice(0, -1), value]);
       }
     }
