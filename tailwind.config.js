@@ -20,6 +20,9 @@ export default {
       fontSize: {
         '3xlPlus': '2rem',
       },
+      letterSpacing: {
+        widestPlus: '.25em',
+      },
     },
   },
   plugins: ['prettier-plugin-tailwindcss'],
