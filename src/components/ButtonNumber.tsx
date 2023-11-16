@@ -1,5 +1,5 @@
 interface ButtonProps {
-  text: number;
+  text: string;
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 

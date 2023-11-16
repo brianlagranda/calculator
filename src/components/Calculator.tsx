@@ -16,14 +16,11 @@ export default function Calculator() {
   const OPERATORS: string[] = ['+', '-', 'x', '/'];
   const NUMBERS: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
-  // const locale = 'en-US';
-  // const numberFormatOptions = { style: 'decimal' };
+  const locale = 'en-US';
+  const numberFormatOptions = { style: 'decimal' };
 
   const calculate = (operator: string) => {
     let calculatedResult: number;
-
-    console.log('Result: ', result);
-    console.log('currentInput: ', currentInput);
 
     switch (operator) {
       case '+':
@@ -58,19 +55,16 @@ export default function Calculator() {
       handleNumericInput(value);
     } else if (OPERATORS.includes(value)) {
       handleOperatorInput(value);
-    } else {
-      handleOtherInput(value);
     }
-
     handleSpecialInputs(value);
   };
 
   const handleNumericInput = (value: string) => {
     if (currentInput === '0') {
-      setCurrentInput(value);
+      value === '.'
+        ? setCurrentInput((currentInput) => currentInput + value)
+        : setCurrentInput(value);
     } else if (currentInput.length < 21) {
-      //const numericValue = parseFloat(currentInput.replace(/,/g, ''));
-
       let newValue;
 
       if (value === '.' && !currentInput.includes('.')) {
@@ -81,28 +75,34 @@ export default function Calculator() {
         newValue = currentInput;
       }
 
+      console.log('newValue: ', newValue);
+
       setCurrentInput(newValue);
+      console.log(currentInput);
     }
   };
 
   const handleOperatorInput = (value: string) => {
     if (operator === '') {
       setResult(currentInput);
-      setHistorial(`${currentInput} ${value}`);
+      setHistorial(
+        `${Number(currentInput).toLocaleString(
+          locale,
+          numberFormatOptions
+        )} ${value}`
+      );
     } else if (currentInput === '0') {
-      setHistorial(`${result} ${value}`);
+      setHistorial(
+        `${Number(result).toLocaleString(locale, numberFormatOptions)} ${value}`
+      );
     } else {
       setResult(calculate(operator));
-      setHistorial(`${result} ${value}`);
+      setHistorial(
+        `${Number(result).toLocaleString(locale, numberFormatOptions)} ${value}`
+      );
     }
     setOperator(value);
     setCurrentInput('0');
-  };
-
-  const handleOtherInput = (value: string) => {
-    if (value !== 'DEL' && value !== '=') {
-      console.log('other output');
-    }
   };
 
   const handleSpecialInputs = (value: string) => {
@@ -123,9 +123,23 @@ export default function Calculator() {
 
   const handleEquals = (value: string) => {
     operator === ''
-      ? setHistorial(`${result} ${value}`)
-      : setHistorial(`${result} ${operator} ${currentInput} ${value}`);
+      ? setHistorial(
+          `${Number(result).toLocaleString(
+            locale,
+            numberFormatOptions
+          )} ${value}`
+        )
+      : setHistorial(
+          `${Number(result).toLocaleString(
+            locale,
+            numberFormatOptions
+          )} ${operator} ${Number(currentInput).toLocaleString(
+            locale,
+            numberFormatOptions
+          )} ${value}`
+        );
     setResult(calculate(operator));
+    setCurrentInput('0');
   };
 
   const deleteLastChar = (input: string) => {
@@ -148,7 +162,11 @@ export default function Calculator() {
   return (
     <>
       <Display
-        result={currentInput === '0' ? result : currentInput}
+        result={
+          currentInput === '0'
+            ? Number(result).toLocaleString(locale, numberFormatOptions)
+            : Number(currentInput).toLocaleString(locale, numberFormatOptions)
+        }
         historial={historial}
       />
       <Keypad onButtonClick={handleClick} />
