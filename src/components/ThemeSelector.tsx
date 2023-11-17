@@ -36,6 +36,9 @@ const ThemeSelector: React.FC<InputProps> = ({ onClick }) => {
 
       const percentage = (x / rect.width) * 100;
 
+      console.log('percentage: ', percentage);
+      console.log('x: ', x);
+
       const theme = Math.ceil(percentage / (100 / 3)).toString();
       onClick(theme);
       setSelectedTheme(theme);
