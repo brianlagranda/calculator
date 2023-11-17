@@ -75,10 +75,7 @@ export default function Calculator() {
         newValue = currentInput;
       }
 
-      console.log('newValue: ', newValue);
-
       setCurrentInput(newValue);
-      console.log(currentInput);
     }
   };
 

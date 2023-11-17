@@ -29,7 +29,7 @@ const ThemeSelector: React.FC<InputProps> = ({ onClick }) => {
       const rect = container.getBoundingClientRect();
       let x = event.clientX - rect.left;
 
-      x = Math.max(0, Math.min(x, rect.width));
+      x = Math.max(5.5, Math.min(x, rect.width));
 
       const themeSpanRect = container.children[2].getBoundingClientRect();
       x = Math.min(x, themeSpanRect.left - rect.left);
