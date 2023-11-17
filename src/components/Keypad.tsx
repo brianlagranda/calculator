@@ -26,15 +26,15 @@ export default function Keypad({ onButtonClick }: KeypadProps) {
       <ButtonNumber text='4' onClick={handleClick} />
       <ButtonNumber text='5' onClick={handleClick} />
       <ButtonNumber text='6' onClick={handleClick} />
-      <ButtonOperator text='+' onClick={handleClick} additionalClasses='' />
+      <ButtonOperator text='+' onClick={handleClick} />
       <ButtonNumber text='1' onClick={handleClick} />
       <ButtonNumber text='2' onClick={handleClick} />
       <ButtonNumber text='3' onClick={handleClick} />
-      <ButtonOperator text='-' onClick={handleClick} additionalClasses='' />
+      <ButtonOperator text='-' onClick={handleClick} />
       <ButtonNumber text='.' onClick={handleClick} />
       <ButtonNumber text='0' onClick={handleClick} />
-      <ButtonOperator text='/' onClick={handleClick} additionalClasses='' />
-      <ButtonOperator text='x' onClick={handleClick} additionalClasses='' />
+      <ButtonOperator text='/' onClick={handleClick} />
+      <ButtonOperator text='x' onClick={handleClick} />
       <ButtonOperator
         text='RESET'
         additionalClasses='col-span-2'

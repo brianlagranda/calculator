@@ -1,6 +1,6 @@
 interface ButtonProps {
   text: string;
-  additionalClasses: string;
+  additionalClasses?: string;
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 

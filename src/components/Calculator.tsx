@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Display from './Display';
 import Keypad from './Keypad';
 
@@ -47,6 +47,32 @@ export default function Calculator() {
 
     return String(calculatedResult);
   };
+
+  const handleKeyDown = (event: KeyboardEvent) => {
+    const key = event.key;
+
+    if (key === 'Enter' || key === '=') {
+      handleClick('=');
+    } else if (key === 'Escape') {
+      handleClick('RESET');
+    } else if (key === 'Backspace') {
+      handleClick('DEL');
+    } else if (key === '.') {
+      handleClick('.');
+    } else if (key === '/' || key === '*' || key === '-' || key === '+') {
+      handleClick(key);
+    } else if (/^\d$/.test(key)) {
+      handleClick(key);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [handleKeyDown]);
 
   const handleClick = (value: string) => {
     if (value === '0' && currentInput === '0') return;
