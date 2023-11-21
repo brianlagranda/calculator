@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import Display from './Display';
 import Keypad from './Keypad';
 
@@ -37,7 +40,7 @@ export default function Calculator() {
         if (divisor !== '0') {
           calculatedResult = divide(result, currentInput);
         } else {
-          alert(`You can't divide by zero`);
+          toast(`You can't divide by zero`);
           calculatedResult = Number(result);
         }
         break;
@@ -184,6 +187,7 @@ export default function Calculator() {
 
   return (
     <>
+      <ToastContainer position='top-center' theme='dark' />
       <Display
         result={
           currentInput === '0'
