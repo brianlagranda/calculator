@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from 'react';
 
 interface ThemeContextProps {
   theme: string;
@@ -8,7 +14,14 @@ interface ThemeContextProps {
 const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
 
 const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [theme, setTheme] = useState('theme1');
+  const storedTheme = localStorage.getItem('theme') || 'theme1';
+
+  const [theme, setTheme] = useState(storedTheme);
+
+  useEffect(() => {
+    // Save theme to localStorage whenever it changes
+    localStorage.setItem('theme', theme);
+  }, [theme]);
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
@@ -26,4 +39,3 @@ const useTheme = () => {
 };
 
 export { ThemeProvider, useTheme };
-
