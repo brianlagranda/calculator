@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import ThemeSwitcher from './ThemeSwitcher';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -186,17 +187,25 @@ export default function Calculator() {
   };
 
   return (
-    <>
-      <ToastContainer position='top-center' theme='dark' />
-      <Display
-        result={
-          currentInput === '0'
-            ? Number(result).toLocaleString(locale, numberFormatOptions)
-            : Number(currentInput).toLocaleString(locale, numberFormatOptions)
-        }
-        historial={historial}
-      />
-      <Keypad onButtonClick={handleClick} />
-    </>
+    <div className='flex flex-col items-center justify-center min-h-screen'>
+      <div className='max-w-xl rounded-lg p-6 bg-calculator'>
+        <ToastContainer position='top-center' theme='dark' />
+        <div className='flex justify-between px-5'>
+          <h1 className='flex items-end text-2xl font-bold text-displayText'>
+            calc
+          </h1>
+          <ThemeSwitcher />
+        </div>
+        <Display
+          result={
+            currentInput === '0'
+              ? Number(result).toLocaleString(locale, numberFormatOptions)
+              : Number(currentInput).toLocaleString(locale, numberFormatOptions)
+          }
+          historial={historial}
+        />
+        <Keypad onButtonClick={handleClick} />
+      </div>
+    </div>
   );
 }

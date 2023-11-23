@@ -1,21 +1,27 @@
 /** @type {import('tailwindcss').Config} */
+
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
-        'main-darkBlue': 'hsl(222, 26%, 31%)',
-        'toggle-darkBlue': 'hsl(223, 31%, 20%)',
-        'screen-darkBlue': 'hsl(224, 36%, 15%)',
-        'keyHover-lightBlue': 'hsl(224, 51%, 76%)',
-        'key-blue': 'hsl(225, 21%, 49%)',
-        'keyShadow-darkBlue': 'hsl(224, 28%, 35%)',
-        'keyHover-lightRed': 'hsl(6, 93%, 67%)',
-        'key-red': 'hsl(6, 63%, 50%)',
-        'keyShadow-darkRed': 'hsl(6, 70%, 34%)',
-        'key-lightGrayishOrange': 'hsl(30, 25%, 89%)',
-        'keyShadow-grayishOrange': 'hsl(28, 16%, 65%)',
-        grayishBlue: 'hsl(221, 14%, 31%)',
+        background: 'var(--color-background)',
+        calculator: 'var(--color-calculator)',
+        toggle: 'var(--color-toggle)',
+        display: 'var(--color-display)',
+        operatorKeyHover: 'var(--color-operatorKeyHover)',
+        operatorKey: 'var(--color-operatorKey)',
+        operatorKeyShadow: 'var(--color-operatorKeyShadow)',
+        otherKeyHover: 'var(--color-otherKeyHover)',
+        otherKey: 'var(--color-otherKey)',
+        otherKeyShadow: 'var(--color-otherKeyShadow)',
+        numberKeyHover: 'var(--color-numberKeyHover)',
+        numberKey: 'var(--color-numberKey)',
+        numberKeyShadow: 'var(--color-numberKeyShadow)',
+        text: 'var(--color-text)',
+        otherKeyText: 'var(--color-otherKeyText)',
+        displayText: 'var(--color-displayText)',
+        switch: 'var(--color-switch)',
       },
       fontSize: {
         '3xlPlus': '2rem',

@@ -9,12 +9,10 @@ const Button: React.FC<ButtonProps> = ({
   additionalClasses,
   onClick,
 }) => {
-  const baseButton =
-    'flex items-center justify-center sm:h-16 sm:pt-1 rounded-lg border-b-4 border-b-keyShadow-darkBlue bg-key-blue text-white text-3xl hover:bg-keyHover-lightBlue active:bg-key-blue/90 active:border-b-key-blue transition-colors';
   return (
     <button
       type='button'
-      className={`${baseButton} ${additionalClasses}`}
+      className={`flex items-center justify-center sm:h-16 sm:pt-1 rounded-lg border-b-4 border-operatorKeyShadow bg-operatorKey text-white text-3xl hover:bg-operatorKeyHover active:bg-operatorKey active:border-operatorKeyShadow transition-colors ${additionalClasses}`}
       onClick={onClick}
     >
       {text}

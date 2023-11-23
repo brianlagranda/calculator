@@ -14,13 +14,13 @@ export default function Keypad({ onButtonClick }: KeypadProps) {
   };
 
   return (
-    <div className='grid w-full grid-cols-4 grid-rows-5 gap-5 rounded-lg bg-toggle-darkBlue/80 p-8'>
+    <div className='grid w-full grid-cols-4 grid-rows-5 gap-5 rounded-lg bg-toggle p-8'>
       <ButtonNumber text='7' onClick={handleClick} />
       <ButtonNumber text='8' onClick={handleClick} />
       <ButtonNumber text='9' onClick={handleClick} />
       <ButtonOperator
         text='DEL'
-        additionalClasses='border-b-keyShadow-darkRed bg-key-red text-white text-2xl active:bg-key-red active:border-b-keyHover-lightRed hover:!bg-keyHover-lightRed'
+        additionalClasses='border-b-otherKeyShadow bg-otherKey text-2xl active:!bg-otherKey active:!border-b-otherKeyShadow hover:!bg-otherKeyHover'
         onClick={handleClick}
       />
       <ButtonNumber text='4' onClick={handleClick} />
@@ -42,7 +42,7 @@ export default function Keypad({ onButtonClick }: KeypadProps) {
       />
       <ButtonOperator
         text='='
-        additionalClasses='col-span-2 border-b-keyShadow-darkRed bg-key-red text-white text-2xl active:bg-key-red/90 active:border-b-keyHover-lightRed hover:!bg-keyHover-lightRed'
+        additionalClasses='col-span-2 border-b-otherKeyShadow bg-otherKey !text-otherKeyText text-2xl active:!bg-otherKey active:!border-b-otherKeyShadow hover:!bg-otherKeyHover'
         onClick={handleClick}
       />
     </div>
