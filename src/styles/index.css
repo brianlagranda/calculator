@@ -27,7 +27,7 @@
     --color-text: hsl(221, 14%, 31%);
     --color-otherKeyText: hsl(0, 0%, 100%);
     --color-displayText: hsl(0, 0%, 100%);
-    --color-switch: hsl(6, 63%, 50%);
+    --color-switch: hsl(6, 93%, 67%);
   }
 
   .theme1 {
@@ -47,7 +47,7 @@
     --color-text: hsl(221, 14%, 31%);
     --color-otherKeyText: hsl(0, 0%, 100%);
     --color-displayText: hsl(0, 0%, 100%);
-    --color-switch: hsl(6, 63%, 50%);
+    --color-switch: hsl(6, 93%, 67%);
   }
 
   .theme2 {
@@ -67,7 +67,7 @@
     --color-text: hsl(60, 10%, 19%);
     --color-otherKeyText: hsl(0, 0%, 100%);
     --color-displayText: hsl(60, 10%, 19%);
-    --color-switch: hsl(185, 42%, 37%);
+    --color-switch: hsl(25, 98%, 65%);
   }
 
   .theme3 {
@@ -86,7 +86,6 @@
     --color-numberKeyShadow: hsl(290, 70%, 36%);
     --color-text: hsl(52, 100%, 62%);
     --color-displayText: hsl(52, 100%, 62%);
-    --color-switch: hsl(281, 50%, 40%);
+    --color-switch: hsl(176, 100%, 80%);
   }
 }
-

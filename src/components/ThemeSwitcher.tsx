@@ -23,7 +23,7 @@ const ThemeSwitcher = () => {
         {['theme1', 'theme2', 'theme3'].map((themeValue) => (
           <div key={themeValue} className='flex'>
             <input
-              className='opacity-0 cursor-pointer'
+              className='opacity-0 h-3 w-3 cursor-pointer'
               type='radio'
               value={themeValue}
               name='theme'
