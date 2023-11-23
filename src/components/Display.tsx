@@ -6,7 +6,9 @@ interface DisplayProps {
 const Display: React.FC<DisplayProps> = ({ result, historial }) => {
   return (
     <div className='grid grid-rows-3 my-6 pt-1 h-28 w-full rounded-md bg-display  px-2'>
-      <p className='text-3xl mt-2 text-white/60 text-right px-2'>{historial}</p>
+      <p className='text-3xl mt-2 text-historialText text-right px-2'>
+        {historial}
+      </p>
       <input
         name='display'
         id='displayInput'
@@ -19,4 +21,3 @@ const Display: React.FC<DisplayProps> = ({ result, historial }) => {
 };
 
 export default Display;
-

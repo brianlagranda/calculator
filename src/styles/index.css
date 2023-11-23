@@ -25,7 +25,7 @@
     --color-numberKey: hsl(30, 25%, 89%);
     --color-numberKeyShadow: hsl(28, 16%, 65%);
     --color-text: hsl(221, 14%, 31%);
-    --color-otherKeyText: hsl(0, 0%, 100%);
+    --color-historialText: hsl(0, 0%, 65%);
     --color-displayText: hsl(0, 0%, 100%);
     --color-switch: hsl(6, 93%, 67%);
   }
@@ -45,7 +45,7 @@
     --color-numberKey: hsl(30, 25%, 89%);
     --color-numberKeyShadow: hsl(28, 16%, 65%);
     --color-text: hsl(221, 14%, 31%);
-    --color-otherKeyText: hsl(0, 0%, 100%);
+    --color-historialText: hsl(0, 0%, 65%);
     --color-displayText: hsl(0, 0%, 100%);
     --color-switch: hsl(6, 93%, 67%);
   }
@@ -65,7 +65,7 @@
     --color-numberKey: hsl(30, 25%, 89%);
     --color-numberKeyShadow: hsl(28, 16%, 65%);
     --color-text: hsl(60, 10%, 19%);
-    --color-otherKeyText: hsl(0, 0%, 100%);
+    --color-historialText: hsl(0, 0%, 45%);
     --color-displayText: hsl(60, 10%, 19%);
     --color-switch: hsl(25, 98%, 65%);
   }
@@ -85,6 +85,7 @@
     --color-numberKey: hsl(268, 47%, 21%);
     --color-numberKeyShadow: hsl(290, 70%, 36%);
     --color-text: hsl(52, 100%, 62%);
+    --color-historialText: hsl(0, 0%, 65%);
     --color-displayText: hsl(52, 100%, 62%);
     --color-switch: hsl(176, 100%, 80%);
   }

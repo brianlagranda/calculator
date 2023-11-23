@@ -19,7 +19,7 @@ export default {
         numberKey: 'var(--color-numberKey)',
         numberKeyShadow: 'var(--color-numberKeyShadow)',
         text: 'var(--color-text)',
-        otherKeyText: 'var(--color-otherKeyText)',
+        historialText: 'var(--color-historialText)',
         displayText: 'var(--color-displayText)',
         switch: 'var(--color-switch)',
       },
@@ -33,4 +33,3 @@ export default {
   },
   plugins: ['prettier-plugin-tailwindcss'],
 };
-
