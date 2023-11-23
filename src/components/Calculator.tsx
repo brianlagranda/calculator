@@ -21,7 +21,11 @@ export default function Calculator() {
   const NUMBERS: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
   const locale = 'en-US';
-  const numberFormatOptions = { style: 'decimal' };
+  const numberFormatOptions = {
+    style: 'decimal',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 20,
+  };
 
   const calculate = (operator: string) => {
     let calculatedResult: number;
