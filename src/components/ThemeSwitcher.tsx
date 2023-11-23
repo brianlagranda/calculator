@@ -12,7 +12,9 @@ const ThemeSwitcher = () => {
   };
 
   return (
-    <div className={`text-displayText grid grid-cols-2 relative`}>
+    <div
+      className={`text-displayText grid grid-cols-2 relative transition-colors duration-500 ease-in-out`}
+    >
       <p className='text-right pr-1 col-span-2 text-sm tracking-widestPlus'>
         1 2 3
       </p>

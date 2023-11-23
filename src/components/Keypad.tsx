@@ -48,4 +48,3 @@ export default function Keypad({ onButtonClick }: KeypadProps) {
     </div>
   );
 }
-
