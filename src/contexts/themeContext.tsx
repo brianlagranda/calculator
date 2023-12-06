@@ -19,7 +19,6 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [theme, setTheme] = useState(storedTheme);
 
   useEffect(() => {
-    // Save theme to localStorage whenever it changes
     localStorage.setItem('theme', theme);
   }, [theme]);
 
